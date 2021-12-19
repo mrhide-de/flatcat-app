@@ -1,12 +1,12 @@
-const Footer = () => {
+const Footer = ({ menu, theKey }) => {
   return (
     <footer className='fc_footer'>
     <ul>
-    <li><a href="https://jetpack.cl" target="_blank" rel="noreferrer">jetpack.cl</a></li>
-    <li><a href="https://jetpack.cl" target="_blank" rel="noreferrer">another link</a></li>
+    {menu.map((navItem, index) =>
+      <li key={theKey+index} ><a href={navItem.url} target="_blank" rel="noreferrer">{navItem.name}</a></li>
+    )}
     </ul>
     </footer>
   )
 }
-
 export default Footer

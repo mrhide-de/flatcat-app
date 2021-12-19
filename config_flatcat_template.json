@@ -1,105 +1,146 @@
 {
-    "version": 123
-    "name": "flatcat-Iota",
-    "wifi": {
-	"accesspoint": "on",
-        "networks": [
-            {
-                "id_str": "AP1",
-                "psk": "JetlagIncognitoAlb",
-                "scan_ssid": 1,
-                "ssid": "jcl-one",
-                "status": "connected"
-            },
-            {
-                "ssid": "WLAN-5678",
-                "psk": "pass5678",
-                "scan_ssid": 1,
-                "id_str": "AP2",
-		"status": "disconnected"
-            },
-            {
-                "ssid": "flatcat",
-                "psk": "password",
-                "scan_ssid": 1,
-                "id_str": "AP3",
-		"status": "disconnected"
-            }
-        ]
-    },
-    "gui_conf": {
-	"trainingwheels": true,
-	"darkmode": false
+    "user_preferences": {
+        "darkmode": false,
+        "flatcat_name": "my flatcat",
+        "network_button": {
+            "color": "green",
+            "label": "connect",
+            "message": ": )",
+            "show_message": false
+        },
+        "network_name": "",
+        "network_secret": "",
+        "network_status": "offline",
+        "show_menu": true,
+        "trainingwheels": true,
+        "update_button": {
+            "color": "green",
+            "label": "check for update",
+            "message": ": )",
+            "show_message": false
+        },
+        "update_status": "none",
+        "version": 123,
+        "wifi": {
+            "accesspoint": "on",
+            "networks": [
+                {
+                    "id_str": "AP1",
+                    "psk": "JetlagIncognitoAlb",
+                    "scan_ssid": 1,
+                    "ssid": "jcl-one",
+                    "status": "connected"
+                },
+                {
+                    "id_str": "AP2",
+                    "psk": "pass5678",
+                    "scan_ssid": 1,
+                    "ssid": "WLAN-5678",
+                    "status": "disconnected"
+                },
+                {
+                    "id_str": "AP3",
+                    "psk": "password",
+                    "scan_ssid": 1,
+                    "ssid": "flatcat",
+                    "status": "disconnected"
+                }
+            ]
+        }
     },
     "gui_layout": {
-	"layout_prefs": [
-	    "update": {
-		"type": "section",
-		"title": "Update your flatcat",
-		"items": [
-		    {
-			"type": "button",
-			"value": "Check for update",
-			"handler": "handleCheckForUpdate"
-		    },
-		    {
-			"type": "helptext",
-			"value": "Update check and install button"
-		    }
-		]
-	    },
-	    "name": {
-		"type": "section",
-		"title": "Name your flatcat",
-		"items": [
-		    {
-			"type": "input",
-			"value": "my flatcat name",
-			"handler": "handleMyFlatcatName"
-		    }
-		]
-	    }
-	    "wifi": {
-		"type": "section",
-		"title": "Wifi configuration",
-		"items": [
-		    {
-			"type": "input",
-			"label": "Network name",
-			"value": "My network name",
-			"handler": "handleNetworkName"
-		    },
-		    {
-			"type": "password",
-			"label": "Network secret"
-			"value": "My network secret"
-			"handler": "handleNetworkSecret"
-		    },
-		    {
-			"type": "button",
-			"label": "Connect to network",
-			"handler": "handleNetworkConnect"
-		    }
-		]
-	    },
-	    "uisettings": {
-		"type": "section",
-		"title": "Layout settings",
-		"items": [
-		    {
-			"type": "toggle",
-			"label": "training wheels",
-			"value": null,
-			"handler": "handleUisettingsTrainingWheels"
-		    },
-		    {
-			"type": "toggle",
-			"label": "dark mode",
-			"value": null,
-			"handler": "handleUisettingsDarkMode"
-		    }
-		]
-	    }
-	]
+        "gui_layout_main": [
+            {
+                "items": [
+                    {
+                        "type": "message",
+                        "value": "Please tap the gear in the upper right to open preferences. Have a nice day!"
+                    }
+                ],
+                "title": "Welcome To Your Flatcat"
+            }
+        ],
+        "gui_layout_prefs": [
+            {
+                "items": [
+                    {
+                        "type": "help message",
+                        "value": "Welcome to preferences! Here you can establish an internet connecting, change the name of your flatcat, update your software and so much more."
+                    }
+                ],
+                "title": ""
+            },
+            {
+                "items": [
+                    {
+                        "handler": "handleNetworkName",
+                        "label": "network name",
+                        "preference": "network_name",
+                        "type": "input"
+                    },
+                    {
+                        "handler": "handleNetworkSecret",
+                        "label": "network secret",
+                        "preference": "network_secret",
+                        "type": "input password"
+                    },
+                    {
+                        "handler": "handleWifiSubmit",
+                        "preference": "network_button",
+                        "type": "button interactive"
+                    },
+                    {
+                        "type": "help message",
+                        "value": "In this section you can connect the flatcat to your wifi router. Just enter the name of the router and the required password."
+                    }
+                ],
+                "title": "Wifi Configuration"
+            },
+            {
+                "items": [
+                    {
+                        "handler": "handleUpdateSubmit",
+                        "preference": "update_button",
+                        "type": "button interactive"
+                    },
+                    {
+                        "type": "help message",
+                        "value": "Here you can download and install a newer version of the flatcat software. Normally a new version comes with additional features and improved functionality."
+                    }
+                ],
+                "title": "Update"
+            },
+            {
+                "items": [
+                    {
+                        "handler": "handlePrefFlatcatName",
+                        "label": "name for my flatcat",
+                        "preference": "flatcat_name",
+                        "type": "input"
+                    }
+                ],
+                "title": "Name"
+            },
+            {
+                "css_class": "fc_onoff",
+                "items": [
+                    {
+                        "handler": "handlePrefTrainingwheels",
+                        "help": "Shows you descriptions and hints on all options, like this one.",
+                        "label": "training wheels",
+                        "preference": "trainingwheels",
+                        "type": "toggle"
+                    },
+                    {
+                        "handler": "handlePrefDarkmode",
+                        "help": "Here you can activate a dark colored theme, goes easier on the eyes in the night time.",
+                        "label": "dark mode",
+                        "preference": "darkmode",
+                        "type": "toggle"
+                    }
+                ],
+                "title": "Layout Settings"
+            }
+        ]
     }
 }

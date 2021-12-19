@@ -1,20 +1,29 @@
+iframe {
+  display: none;
+}
 
 .App {
   display: flex;
   justify-content: center;
-  background: #b9b9b9;
+  background: #828282;
 }
 
 #fc_wrap {
   width: 100vw;
   height: auto;
   max-width: 550px;
+  min-height: 100vh;
   position: relative;
   background: white;
 }
 #fc_wrap.withMenu {
   height: 100vh;
   overflow: hidden;
+}
+#the_content {
+  min-height: calc(100vh - 200px);
+  display: grid;
+  justify-content: center;
 }
 
 button {
@@ -105,8 +114,8 @@ section.fc_onoff::after {
   height: 100%;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  margin: 22px 18px 0 0;
+  align-items: flex-start;
+  margin: 8px 18px 0 0;
   padding: 0;
 }
 #fc_triangle {
@@ -191,6 +200,7 @@ label {
 label input {
   display: block;
   width: 100%;
+  margin-top: 2px;
   box-sizing: border-box;
   border: 1px solid #ededed;
 }
@@ -261,16 +271,16 @@ label input {
 /* HELP MESSAGEs */
 
 .help_message,
-.help_message_section {
+.help_message_paragraph {
   display: none;
 }
 .helping .help_message,
-.helping .help_message_section {
+.helping .help_message_paragraph {
   display: block;
 }
 
 .help_message::before,
-.help_message_section p::before,
+.help_message_paragraph::before,
 .explaination p::before {
   content: "?";
   display: inline-block;
@@ -285,26 +295,6 @@ label input {
   margin: 0px 4px 0 2px;
 }
 
-/* BURGER MENU */
-
-.fc_btn_option {
-  color: #858585;
-  grid-row: 2;
-  grid-column: 1;
-  justify-self: flex-end;
-  align-self: flex-end;
-  margin: 0 12px;
-  font-size: 42px;
-  background: transparent;
-  border-style: none;
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.1s 0.2s ease;
-}
-
-.fc_btn_option.hidden {
-  opacity: 0;
-}
 
 #svg1 {
   grid-row: 1;
@@ -391,6 +381,33 @@ label input {
 
 /* THE MENU */
 
+.fc_btn_option {
+  color: #000;
+  grid-row: 2;
+  grid-column: 1;
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin: 0 12px;
+  font-size: 42px;
+  background: transparent;
+  border-style: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.1s 0.2s ease;
+}
+
+.fc_btn_option.hidden {
+  opacity: 0;
+}
+
+.fc_btn_option.closer {
+  position: absolute;
+  top: 72px;
+  right: 0;
+  font-size: 38px;
+  color: #000;
+}
+
 .theMenu {
   width: 100vw;
   max-width: 550px;
@@ -435,13 +452,6 @@ label input {
 .theMenu h2 {
   margin-top: 23px;
 }
-.fc_btn_option.closer {
-  position: absolute;
-  top: 72px;
-  right: 0;
-  font-size: 38px;
-  color: #000;
-}
 #themenu_top {
   height: 30px;
   flex-shrink: 0;
@@ -464,6 +474,7 @@ section.notice p {
 
 .fc_footer {
   margin-top: 42px;
+  align-self: flex-end;
 }
 
 .fc_footer ul {
@@ -845,6 +856,7 @@ input {
 }
 .darked .fc_btn_option {
   color: #ebebeb;
+  background: transparent;
 }
 .darked .clock_wrap {
   border-color: #1b1b1b;
@@ -854,6 +866,9 @@ input {
 }
 .darked .example-track.example-track-1 {
   border-color: black;
+}
+.darked .fc_footer ul li a {
+  color: #ebebeb;
 }
 
 /* fin */

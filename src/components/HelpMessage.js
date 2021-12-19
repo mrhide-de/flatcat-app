@@ -1,12 +1,6 @@
-import SVGseparator from './SVGseparator'
-
-const HelpMessage = ({ helpMessage }) => {
+const HelpMessage = ({ props }) => {
   return (
-    <section className='help_message_section'>
-    <p>{helpMessage}</p>
-    <SVGseparator a={20} b={60} c={30} d={82} width={18} />
-    </section>
+    <p className='help_message_paragraph'>{props.value}</p>
   )
 }
-
 export default HelpMessage

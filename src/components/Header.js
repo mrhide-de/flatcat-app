@@ -1,4 +1,4 @@
-const Header = ({ name, toggleMenu, showMenu }) => {
+const Header = ({ preferences, toggleMenu }) => {
   return (
     <header className='fc_header'>
 
@@ -10,7 +10,7 @@ const Header = ({ name, toggleMenu, showMenu }) => {
     <polygon points="0,100 28,40 70,0 100,0 0,0" />
     </svg>
     </div>
-    <h1>{name}</h1>
+    <h1>{preferences.flatcat_name}</h1>
     <div
       className='header_svg'
       id='fc_triangle'
@@ -20,7 +20,7 @@ const Header = ({ name, toggleMenu, showMenu }) => {
     </svg>
     </div>
     <button
-      className={`fc_btn_option ${showMenu ? 'hidden' : ''}`}
+      className={`fc_btn_option ${preferences.show_menu ? 'hidden' : ''}`}
       onClick={toggleMenu}>&#9881;
     </button>
 

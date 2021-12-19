@@ -1,6 +1,3 @@
-// import React, { useState } from "react"
-import React from "react"
-
 const Inputer = ({ Value, setFcuiName, confNameHandleSubmit }) => {
     // const [input, setInput] = useState(Value)
   return (
